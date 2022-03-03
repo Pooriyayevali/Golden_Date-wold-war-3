@@ -1,0 +1,59 @@
+
+
+
+#=========================year======================================
+def year_1(year : str) -> int:
+    return (int(year[0:2]) + int(year[2:4]))
+
+def year_2(year : str) -> int:
+    return(int(year[0]) +int(year[1]) +int(year[2]) +int(year[3]))
+#========================month=======================================
+def month_1(month : str) -> int:
+    return(Months.index(month) + 1)
+
+def month_2(month : str) -> int:
+    month_num = Months.index(month) + 1
+    if len(str(month_num)) == 2:
+        return (int(str(month_num)[0])  + int(str(month_num)[1]))
+    else:
+        return(Months.index(month) + 1)
+#============================day========================================
+def day_1(day : str) -> int:
+    return int(day)
+
+def day_2(day : str) -> int:
+    if len(day) == 2:
+        return(int(day[0]) + int(day[1]))
+    else :
+        return int(day)
+
+def calculate():
+    for year in Years:
+        for month in Months:
+            for day in Days:
+                first_method = 0
+                second_methond = 0
+                second_methond_2 = 0
+
+                first_method = year_1(year) + month_1(month) + day_1(day)
+                second_methond = year_2(year) + month_2(month) + day_2(day)
+                second_methond_2 = year_2(year) + month_2(month) + day_1(day)
+
+                if first_method == 68 and second_methond == 32 :
+                    print(f'First_method : {day} {month} in the year-----> {year}')
+                elif first_method == 68 and second_methond_2 == 32 :
+                    print(f'Second_method : {day} {month} in the year-----> {year}')
+
+
+    
+print("Hello ! \n I give You the Golden date in between tow Year give to me:")
+start_Y = int(input('Give me the start year...: '))
+end_Y = int(input('Give me the  end  year...: '))
+
+Years = (str(i) for i in range(start_Y, end_Y + 1))
+Months = ('January', 'February', 'March', 'April', 'May', 'June', 'July'
+, 'August', 'September', 'October', 'November', 'December')
+Days = [str(i) for i in range(1, 31)]
+calculate()
+
+input('Any key...')
